@@ -38,15 +38,14 @@ jobs:
 
       # Upload Artifact Build
       # Noted For Output [main_project_module]/build/outputs/apk/debug/
-      # Set Current Date As Env Variable
       - name: APK File Name
         run: echo "${{ env.playstore_name }}${{ env.date_today }}${{ env.repository_name }}" >> APK_NAME
       - name: Rename debug APK file
-        run: mv ${{ env.main_project_module }}/build/outputs/apk/debug/*.apk ${{ env.main_project_module }}/build/outputs/apk/debug/${{APK_NAME}}_v1_2.apk
+        run: mv ${{ env.main_project_module }}/build/outputs/apk/debug/*.apk ${{ env.main_project_module }}/build/outputs/apk/debug/${{ env.AP_KNAME }}_v1_2.apk      
       - name: Upload APK Debug - ${{ env.repository_name }}
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.date_today }} - ${{ env.playstore_name }} - ${{ env.repository_name }} - Debug APK
-          path: ${{ env.main_project_module }}/build/outputs/apk/debug/${{APK_NAME}}_v1_2.apk
+          path: ${{ env.main_project_module }}/build/outputs/apk/debug/${{ env.AP_KNAME }}_v1_2.apk
 
 
