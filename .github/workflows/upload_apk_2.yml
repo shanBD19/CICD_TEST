@@ -24,6 +24,17 @@ jobs:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
 
+      # Set up Android SDK
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          sdk-platform: 'platforms;android-30'
+          ndk-version: '21.4.7075529'
+
+      # Set ANDROID_SDK_ROOT environment variable
+      - name: Set ANDROID_SDK_ROOT
+        run: echo "export ANDROID_SDK_ROOT=$ANDROID_HOME" >> $GITHUB_ENV
+
       - name: chanage wrapper permissions
         run: chmod +x ./gradlew
 
